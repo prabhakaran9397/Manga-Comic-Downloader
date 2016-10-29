@@ -18,3 +18,7 @@ All done!
 chapter pictures will be stored in the [comic-name]-[chapter-number] directory
 
 complete chapter will be stored in the current directory as [comic-name]-[chapter-number].pdf
+
+you will need imagemagick to convert them to PDF
+
+$`sudo apt-get install imagemagick`
