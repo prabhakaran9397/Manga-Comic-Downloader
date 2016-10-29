@@ -21,4 +21,8 @@ complete chapter will be stored in the current directory as [comic-name]-[chapte
 
 you will need imagemagick to convert them to CBR (Comic Book Reader)
 
-$`sudo apt-get install imagemagick`
+$`sudo apt-get install imagemagick` (GNU/Linux - Debian)
+
+or
+
+$`brew install imagemagick` (OSX)
