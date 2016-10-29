@@ -17,7 +17,7 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 		echo "creating a single PDF!"
 		cd $comic-$chap
 		convert $(ls -1v) $comic-$chap.pdf
-		mv $comic-$chap.pdf ../
+		mv $comic-$chap.pdf ../$comic-$chap.cbr
 		cd ../
 		echo "All done!"
 	fi
