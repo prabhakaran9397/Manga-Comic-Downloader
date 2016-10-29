@@ -10,8 +10,9 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 		mkdir $comic-$chap > /dev/null 2>&1
 		for num in $(seq 1 $page_count); do
 			pic_link=$($prefix/$num | grep "<a" | grep "src" | egrep -o http://\[A-Za-z0-9./-\]\+.jpg)
-			echo "Downloading $comic-$chap/$comic-$chap-$num.jpg"
+			echo -n "downloading $comic-$chap/$comic-$chap-$num.jpg........"
 			curl -s -o $comic-$chap/$comic-$chap-$num.jpg  $pic_link
+			echo "done!"
 		done
 	fi
 fi
