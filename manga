@@ -14,6 +14,12 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 			curl -s -o $comic-$chap/$comic-$chap-$num.jpg  $pic_link
 			echo "done!"
 		done
+		echo "creating a single PDF!"
+		cd $comic-$chap
+		convert $(ls -1v) $comic-$chap.pdf
+		mv $comic-$chap.pdf ../
+		cd ../
+		echo "All done!"
 	fi
 fi
 
