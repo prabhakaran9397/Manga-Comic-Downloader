@@ -8,18 +8,17 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 	page_count=$($prefix | grep "</select>" | egrep -o \[0-9\]\+)
 	if [ -n "$page_count" ]; then
 		mkdir $comic-$chap > /dev/null 2>&1
-		for num in $(seq 1 $page_count); do
+		for num in $(seq -w 1 $page_count); do
 			pic_link=$($prefix/$num | grep "<a" | grep "src" | egrep -o http://\[A-Za-z0-9./-\]\+.jpg)
 			echo -n "downloading $comic-$chap/$comic-$chap-$num.jpg........"
 			curl -s -o $comic-$chap/$comic-$chap-$num.jpg  $pic_link
 			echo "done!"
 		done
-		echo "creating a single PDF!"
-		cd $comic-$chap
-		convert $(ls -1v) $comic-$chap.pdf
-		mv $comic-$chap.pdf ../$comic-$chap.cbr
-		cd ../
-		echo "All done!"
+		echo "Compressing Pictures!!!"
+		zip -r $comic-$chap $comic-$chap
+		mv $comic-$chap.zip $comic-$chap.cbr
+		rm -rf $comic-$chap
+		echo "Succefully Downloaded."
 	fi
 fi
 
