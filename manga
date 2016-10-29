@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -n "$1" ] && [ -n "$2" ]; then
+	url="http://www.mangareader.net"
+	comic=$1
+	chap=$2
+	prefix="curl -s $url/$comic/$chap"
+	page_count=$($prefix | grep "</select>" | egrep -o \[0-9\]\+)
+	if [ -n "$page_count" ]; then
+		mkdir $comic-$chap
+		for num in $(seq 1 $page_count); do
+			pic_link=$($prefix/$num | grep "<a" | grep "src" | egrep -o http://\[A-Za-z0-9./-\]\+.jpg)
+			curl -o $pic_link
+		done
+	fi
+fi
+
+exit 0
