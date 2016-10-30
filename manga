@@ -8,6 +8,7 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 	page_count=$($prefix | grep "</select>" | egrep -o \[0-9\]\+)
 	if [ -n "$page_count" ]; then
 		mkdir $comic-$chap > /dev/null 2>&1
+		echo "Totally $page_count Pages in Chapter $chap!"
 		for num in $(seq -w 1 $page_count); do
 			pic_link=$($prefix/$num | grep "<a" | grep "src" | egrep -o http://\[A-Za-z0-9./-\]\+.jpg)
 			echo -n "downloading $comic-$chap/$comic-$chap-$num.jpg........"
