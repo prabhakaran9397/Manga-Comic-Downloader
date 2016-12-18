@@ -20,9 +20,9 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 		mv $comic-$chap.zip $comic-$chap.cbr
 		rm -rf $comic-$chap
 		echo "Succefully Downloaded."
+	else
+		echo "Maybe not released yet!"
 	fi
-else
-	echo "Maybe not released yet!"
 fi
 
 exit 0
