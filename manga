@@ -21,6 +21,8 @@ if [ -n "$1" ] && [ -n "$2" ]; then
 		rm -rf $comic-$chap
 		echo "Succefully Downloaded."
 	fi
+else
+	echo "Maybe not released yet!"
 fi
 
 exit 0
